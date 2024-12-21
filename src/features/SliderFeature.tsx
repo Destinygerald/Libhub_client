@@ -4,10 +4,10 @@ const SliderSlicer = createSlice({
 	name: 'slider',
 	initialState: { value: false },
 	reducers: {
-		openSlider: (state, _) => {
+		openSlider: state => {
 			state.value = true
 		},
-		closeSlider: (state, _) => {
+		closeSlider: state => {
 			state.value = false
 		}
 	}
@@ -15,4 +15,4 @@ const SliderSlicer = createSlice({
 
 export default SliderSlicer.reducer
 
-const { openSlider, closeSlider } = SliderSlicer.actions
+export const { openSlider, closeSlider } = SliderSlicer.actions

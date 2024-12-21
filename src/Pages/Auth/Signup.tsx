@@ -26,6 +26,10 @@ function Page () {
 		setSignup({ ...signup, [e.target.name] : e.target.value })
 	}
 
+	function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+	}
+
 	return (
 		<div className='signup'>
 			<div className='auth-banner'></div>
@@ -36,7 +40,7 @@ function Page () {
 
 				<div className='auth-container-line' />
 
-				<form className='auth-form'>
+				<form className='auth-form' onSubmit={handleSubmit}>
 					<InputField type='text' name='name' value={signup.name} handleChange={handleChange} />
 					<InputField type='email' name='email' value={signup.email} handleChange={handleChange} />
 					<InputField type='password' name='password' value={signup.password} handleChange={handleChange} />

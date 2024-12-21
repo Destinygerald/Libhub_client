@@ -2,11 +2,13 @@ import './style.css'
 import './style.mobile.css'
 import React, { useEffect, useState, useRef } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
-import { CiSearch } from 'react-icons/ci'
+import { CiSearch, CiMenuFries } from 'react-icons/ci'
 import { BsX } from 'react-icons/bs'
 import { IoIosEye } from 'react-icons/io'
 import { BookDisplay } from './Components/BookDisplay.tsx'
+import { openSlider } from '../../../features/SliderFeature.tsx'
 
 type BookCardType = {
 	key?: string;
@@ -54,7 +56,7 @@ function PageNav ({ setPopup }: PageNavType) {
 				<span> <CiSearch /> </span>
 				<input placeholder='Search for Book title, Book author, Categories...' value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
 
-				<button onClick={() => setPopup(true)}> Upload Book </button>
+				<button onClick={() => setPopup(true)}> Upload </button>
 			</div>
 		</div>
 	)
@@ -299,10 +301,18 @@ function PagePopup ({ setPopup }: PageNavType) {
 
 function PageIndex () {
 	const [ popup, setPopup ] = useState<boolean>(false)
+	const dispatch = useDispatch()
+
+	function sliderOpen () {
+		dispatch(openSlider())
+	}
 
 	return (
 		<div className='dashboard-books'>
 			<div className='dashboard-books-cnt'>
+
+				<div className='dashboard-menu books-menu' onClick={sliderOpen}> <CiMenuFries /> </div>
+
 				<PageNav setPopup={setPopup} />
 
 				<div className='dashboard-books-cnt-main'>

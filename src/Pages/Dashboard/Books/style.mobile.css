@@ -1,0 +1,139 @@
+@media (max-width: 600px) {
+	.dashboard-books-cnt-nav {
+		/*display: none;*/
+	}
+
+	.books-menu {
+		position: absolute;
+		top: 12px;
+		left: 4px;
+	}
+
+	.dashboard-books-cnt-grid {
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	}
+
+	.dashboard-books-cnt-main {
+		padding-right: 0;
+	}
+
+	.dashboard-books-cnt-main::-webkit-scrollbar {
+		display: none;
+	}
+
+	.dashboard-books-cnt-nav {
+		flex-direction: column-reverse;
+		gap: 12px;
+	}
+
+	.dashboard-books-cnt-nav-categories {
+		/*display: none;*/
+		align-self: flex-start;
+	}
+
+	.dashboard-books-cnt-nav-search {
+		align-self: flex-end;
+		width: 80%;
+		gap: 12px;
+		height: fit-content;
+	}
+
+	.dashboard-books-cnt-nav-search > input {
+		padding: 12px 28px;
+		font-size: .72rem;
+		font-weight: 500;
+		/*width: 60%;*/
+	}
+
+	.dashboard-books-popup {
+		width: 100%;
+		height: 88%;
+		border-radius: 32px;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		top: auto;
+		left: 0;
+		translate: 0 0;
+		bottom: 0;
+		box-shadow: 0 0 2px rgb(0, 0, 0, .6);
+		padding: 0 40px;
+		padding-top: 54px;
+	}
+
+	.dashboard-books-popup-form {
+		flex-direction: column-reverse;
+		/* Used flex-end cause it's on column-reverse */
+		justify-content: flex-end;
+	}
+
+	.dashboard-books-popup-form > div:first-child {
+		width: 100%;
+	}
+
+	.dashboard-books-popup-form > div:last-child {
+		width: 100%;
+		/*background: red;*/
+		height: fit-content !important;
+	}
+
+	.dashboard-books-popup-form textarea {
+		height: 180px;
+	}
+
+	.pdf-drop {
+		height: 160px !important;
+		border-radius: 12px;
+		top: 0;
+	}
+
+	.popup-exit {
+		right: 22px;
+		top: 22px;
+	}
+
+	.popup-error {
+		width: calc(100% - 80px);
+	}
+
+	.book-display {
+		flex-direction: column;
+		gap: 60px;
+		margin-top: 20px;
+		position: relative;
+	}
+
+	.book-display-main {
+		width: 100%;
+	}
+
+	.book-display-info {
+		flex-direction: column;
+	}
+
+	.book-display-info > div:first-child {
+		width: 50%;
+		height: 220px;
+		align-self: center;
+	}
+
+	.book-display-info > div:nth-child(2) {
+		width: 100%;
+	}
+
+	.book-display-similar-category {
+		display: none;
+	}
+
+	.book-display-extra {
+		width: 100%;
+		padding-bottom: 28px;
+	}
+
+	.book-display-back {
+		display: flex;
+		position: absolute;
+		left: 20px;
+		font-size: 1.2rem;
+		top: 0;
+	}
+}

@@ -2,8 +2,9 @@ import '../style.css'
 import '../style.mobile.css'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { CiSearch, CiMenuFries } from 'react-icons/ci'
-
+import { openSlider } from '../../../features/SliderFeature.tsx'
 
 
 type BookCardType = {
@@ -152,15 +153,21 @@ function Page () {
 
 	const [ search, setSearch ] = useState<string>('')
 
+	const dispatch = useDispatch()
+
 	function handleChange (e: React.ChangeEvent<HTMLInputElement>) {
 		setSearch(e.target.value)
+	}
+
+	function slider () {
+		dispatch(openSlider())
 	}
 
 	return (
 		<div className='dashboard-home'>
 			<div className='dashboard-home-top'>
 
-				<div className='dashboard-menu'>
+				<div className='dashboard-menu' onClick={slider}>
 					<CiMenuFries />
 				</div>
 

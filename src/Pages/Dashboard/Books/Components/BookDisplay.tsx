@@ -251,6 +251,11 @@ function BookDisplayExtra () {
 export function BookDisplay () {
 
 	const params = useParams()
+	const navigate = useNavigate()
+
+	function goBack() {
+		navigate(-1)
+	}
 
 	useEffect(() => {
 		// fetch the file content through the params.id
@@ -262,6 +267,8 @@ export function BookDisplay () {
 	return (
 		<div className='book-display'>
 			
+			<div className='book-display-back' onClick={goBack}> {'<'} </div>
+
 			<BookDisplayMain />
 			
 			<BookDisplayExtra />

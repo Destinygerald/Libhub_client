@@ -22,6 +22,11 @@ function Page () {
 		setLogin({ ...login, [e.target.name] : e.target.value })
 	}
 
+	function loginToLibrary (e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+		navigate('/library')
+	}
+
 	return (
 		<div className='login'>
 			<div className='auth-banner'></div>
@@ -32,7 +37,7 @@ function Page () {
 
 				<div className='auth-container-line' />
 
-				<form className='auth-form'>
+				<form className='auth-form' onSubmit={loginToLibrary}>
 					<InputField type='email' name='email' value={login.email} handleChange={handleChange} />
 					<InputField type='password' name='password' value={login.password} handleChange={handleChange} forgot />
 					<button> Login </button>
