@@ -1,0 +1,39 @@
+@media (max-width: 600px) {
+	.auth-banner {
+		display: none;
+	}
+
+	.auth-container {
+		width: 100%;
+		padding: 60px 6%;
+	}
+
+	.auth-container-line {	
+		margin: 20px 0;
+	}
+
+	.input-field > input {
+		padding: 10px 16px;
+	}
+
+	.input-field > div:first-child > span:nth-child(2) {
+		font-size: .6rem;
+		align-self: flex-end;
+		opacity: .88;
+	}
+
+	.auth-back {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 32px;
+		padding: 12px;
+		background: white;
+		width: 28px;
+		height: 28px;
+		border-radius: 4px;
+		box-shadow: 0 0 2px rgb(0, 0, 0, .6);
+		z-index: 1;
+	}
+}
