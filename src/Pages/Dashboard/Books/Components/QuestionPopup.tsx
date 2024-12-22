@@ -29,6 +29,10 @@ export function QuestionPopup ({ closePopup }: questionPopupType) {
 		return;
 	}
 
+	function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+	}
+
 	useEffect(() => {
 
 		const main = document.querySelector('.book-display')
@@ -49,7 +53,7 @@ export function QuestionPopup ({ closePopup }: questionPopupType) {
 
 			<span className='question-popup-hdr'>Ask a Question?</span>
 
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div className='question-input-field input-field'>
 					<div>
 						<span> Question Title* </span>
@@ -66,6 +70,8 @@ export function QuestionPopup ({ closePopup }: questionPopupType) {
 
 					<textarea />
 				</div>
+
+				<button>Send</button>
 			</form>
 		
 		</div>

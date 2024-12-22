@@ -5,6 +5,7 @@ import { Sidebar } from './Components/Sidebar.tsx'
 import { Slider } from './Components/Slider.tsx'
 import Home from './Home/Page.tsx'
 import Books from './Books/Page.tsx'
+import Collections from './Collections/Page.tsx'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../App.tsx'
 
@@ -28,6 +29,7 @@ function Page () {
 				<Routes>
 					<Route index element={<Home />} /> 
 					<Route path='/books/*' element={<Books />} />
+					<Route path='/collections/*' element={<Collections />} />
 				</Routes>
 			</div>
 

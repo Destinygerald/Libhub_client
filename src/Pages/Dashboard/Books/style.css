@@ -194,7 +194,7 @@
 
 .dashboard-books-popup-form  input, .dashboard-books-popup-form textarea{
 	height: fit-content;
-	background-color: rgb(230, 230, 230);
+	background-color: rgb(240, 240, 240);
 	border: none;
 	padding: 16px 18px;
 	font-size: .72rem;
@@ -699,4 +699,18 @@
 .question-input-field > textarea:focus {
 	box-shadow: 0 0 1px var(--primary-orange);
 	border: 1px solid var(--primary-orange);
+}
+
+.question-popup > form > button {
+	padding: 10px 40px;
+	background-color: var(--primary-orange);
+	color: white;
+	border: none;
+	font-size: .6rem;
+	font-weight: 600;
+	font-family: Poppins;
+	border-radius: 4px;
+	cursor: pointer;
+	width: fit-content;
+	align-self: flex-end;
 }

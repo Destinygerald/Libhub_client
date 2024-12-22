@@ -18,7 +18,6 @@ export type IRootState = ReturnType<typeof store.getState>
 
 function App() {
 
-
   return (
    
    <div className='app'>

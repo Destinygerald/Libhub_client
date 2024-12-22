@@ -45,7 +45,7 @@
 		/*width: 60%;*/
 	}
 
-	.dashboard-books-popup {
+	.dashboard-books-popup, .question-popup {
 		width: 100%;
 		height: 88%;
 		border-radius: 32px;

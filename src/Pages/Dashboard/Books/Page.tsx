@@ -6,19 +6,9 @@ import { useDispatch } from 'react-redux'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { CiSearch, CiMenuFries } from 'react-icons/ci'
 import { BsX } from 'react-icons/bs'
-import { IoIosEye } from 'react-icons/io'
 import { BookDisplay } from './Components/BookDisplay.tsx'
 import { openSlider } from '../../../features/SliderFeature.tsx'
-
-type BookCardType = {
-	key?: string;
-	id: string;
-	img: string | any;
-	title: string;
-	description: string;
-	views: number;
-}
-
+import { BookCard } from './Components/BookCard.tsx'
 
 type PopupInputType = {
 	type: string;
@@ -28,8 +18,14 @@ type PopupInputType = {
 	changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 } 
 
+type PagePopupType = {
+	setPopup: (arg: boolean) => void;
+}
+
 type PageNavType = {
 	setPopup: (arg: boolean) => void;
+	nav?: string;
+	setNav: (arg: string) => void;
 }
 
 type BookDetailsType = {
@@ -39,17 +35,20 @@ type BookDetailsType = {
 	description?: string;
 }
 
-function PageNav ({ setPopup }: PageNavType) {
+function PageNav ({ setPopup, nav, setNav }: PageNavType) {
 
-	const [ nav, setNav ] = useState<string>('Recents')
 	const [ search, setSearch ] = useState<string>('')
+
+	function switchDisplay (arg: string) {
+		setNav(arg)
+	}
 
 	return (
 		<div className='dashboard-books-cnt-nav'>
 			<div className='dashboard-books-cnt-nav-categories'>
-				<span className={ nav == 'Recents' ? 'selected-nav' : '' }>Recents</span>
-				<span className={ nav == 'Recents' ? 'Popular' : '' }>Popular</span>
-				<span className={ nav == 'Recents' ? 'Next' : '' }>Next</span>
+				<span className={ nav == 'Recents' ? 'selected-nav' : '' } onClick={() => switchDisplay('Recents')}>Recents</span>
+				<span className={ nav == 'All' ? 'selected-nav' : '' } onClick={() => switchDisplay('All')}>All</span>
+				<span className={ nav == 'Popular' ? 'selected-nav' : '' } onClick={() => switchDisplay('Popular')}>Popular</span>
 			</div>
 
 			<div className='dashboard-books-cnt-nav-search'>
@@ -57,36 +56,6 @@ function PageNav ({ setPopup }: PageNavType) {
 				<input placeholder='Search for Book title, Book author, Categories...' value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
 
 				<button onClick={() => setPopup(true)}> Upload </button>
-			</div>
-		</div>
-	)
-}
-
-function BookCard ({ id, img, title, description, views }: BookCardType) {
-
-	const navigate = useNavigate()
-
-	function openBook () {
-		navigate(`/library/books/${id}`)
-	}
-
-	return (
-		<div className='dashboard-books-card' onClick={openBook}>
-			<div>
-				<img src={img} />
-			</div>
-
-			<div className='dashboard-books-card-info'>
-				<div>
-					<span>{title}</span>
-
-					<div>
-						<span> <IoIosEye /> </span>
-						<span> {views} </span>
-					</div>
-				</div>
-
-				<span>{description}</span>
 			</div>
 		</div>
 	)
@@ -102,7 +71,7 @@ function PagePopupInput ({ type, name, value, placeholder, changeHandler }: Popu
 	)
 }
 
-function PagePopup ({ setPopup }: PageNavType) {
+function PagePopup ({ setPopup }: PagePopupType) {
 
 	const [ error, setError ] = useState<string>('')
 	const [ pdf, setPdf ] = useState<string>('')
@@ -301,6 +270,7 @@ function PagePopup ({ setPopup }: PageNavType) {
 
 function PageIndex () {
 	const [ popup, setPopup ] = useState<boolean>(false)
+	const [ nav, setNav ] = useState<string>('Recents')
 	const dispatch = useDispatch()
 
 	function sliderOpen () {
@@ -313,14 +283,30 @@ function PageIndex () {
 
 				<div className='dashboard-menu books-menu' onClick={sliderOpen}> <CiMenuFries /> </div>
 
-				<PageNav setPopup={setPopup} />
+				<PageNav setPopup={setPopup} nav={nav} setNav={setNav} />
 
 				<div className='dashboard-books-cnt-main'>
 					<div className='dashboard-books-cnt-grid'>
 						{
-							Array.from(Array(20)).map((_, i) => (
+							nav == 'Recents'
+							?
+							Array.from(Array(11)).map((_, i) => (
 								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
 							))
+							:
+							nav == 'All'
+							?
+							Array.from(Array(22)).map((_, i) => (
+								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
+							))
+							:
+							nav == 'Popular'
+							?
+							Array.from(Array(8)).map((_, i) => (
+								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
+							))
+							:
+							<></>
 						}
 					</div>
 				</div>
