@@ -1,9 +1,10 @@
 import '../style.css'
 import '../style.mobile.css'
-import { CiHome, CiBookmark } from 'react-icons/ci'
+import { CiHome } from 'react-icons/ci'
 import { IoBookOutline } from 'react-icons/io5'
 import { MdOutlineCollections } from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { HiOutlineArchiveBox } from 'react-icons/hi2'
 
 type SidebarItemProps = {
 	Icon: any;
@@ -37,7 +38,7 @@ export function Sidebar () {
 			<div className='sidebar-cnt'>
 				<SidebarItem Icon={<CiHome />} nav='/library' name='Home' active={pathname == '/library'} />
 				<SidebarItem Icon={<IoBookOutline />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
-				<SidebarItem Icon={<CiBookmark />} nav='/library/saved' name='Saved' active={pathname == '/library/saved'} />
+				<SidebarItem Icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
 				<SidebarItem Icon={<MdOutlineCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
 			</div>
 

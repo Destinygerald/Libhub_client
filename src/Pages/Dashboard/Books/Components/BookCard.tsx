@@ -7,7 +7,7 @@ import { IoIosEye } from 'react-icons/io'
 type BookCardType = {
 	key?: string;
 	id: string;
-	img: string | any;
+	img?: string | any;
 	title: string;
 	description: string;
 	views: number;

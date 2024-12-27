@@ -55,7 +55,7 @@ function PageNav ({ setPopup, nav, setNav }: PageNavType) {
 				<span> <CiSearch /> </span>
 				<input placeholder='Search for Book title, Book author, Categories...' value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
 
-				<button onClick={() => setPopup(true)}> Upload </button>
+				<button onClick={() => setPopup(true)}> New Book </button>
 			</div>
 		</div>
 	)
@@ -271,10 +271,27 @@ function PagePopup ({ setPopup }: PagePopupType) {
 function PageIndex () {
 	const [ popup, setPopup ] = useState<boolean>(false)
 	const [ nav, setNav ] = useState<string>('Recents')
+	const [ pageIndex, setPageIndex ] = useState<number>(1)
 	const dispatch = useDispatch()
 
 	function sliderOpen () {
 		dispatch(openSlider())
+	}
+
+	function prevIndex () {
+		if (pageIndex <= 1) return
+
+		setPageIndex(pageIndex => pageIndex - 1);
+	}
+
+	function nextIndex () {
+		if (pageIndex >= 8) return
+
+		setPageIndex(pageIndex => pageIndex + 1);
+	}
+
+	function changeIndex (id: number) {
+		setPageIndex(id)
 	}
 
 	return (
@@ -290,13 +307,13 @@ function PageIndex () {
 						{
 							nav == 'Recents'
 							?
-							Array.from(Array(11)).map((_, i) => (
+							Array.from(Array(10)).map((_, i) => (
 								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
 							))
 							:
 							nav == 'All'
 							?
-							Array.from(Array(22)).map((_, i) => (
+							Array.from(Array(12)).map((_, i) => (
 								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
 							))
 							:
@@ -308,6 +325,22 @@ function PageIndex () {
 							:
 							<></>
 						}
+					</div>
+
+					<div className='dashboard-books-pagination'>
+						<span className={pageIndex <= 1 ? 'pagination-btn-disable' : 'pagination-btn'} onClick={prevIndex}> Prev </span>
+						
+						<div className='dashboard-books-pagination-cnt'>
+							{
+								// Array.from(Array(8)).map((_, i) => (
+									<span className='page-index'>
+										{pageIndex} of 8
+									</span>
+								// ))
+							}
+						</div>
+
+						<span className={pageIndex >= 8 ? 'pagination-btn-disable' : 'pagination-btn'} onClick={nextIndex}> Next </span>
 					</div>
 				</div>
 

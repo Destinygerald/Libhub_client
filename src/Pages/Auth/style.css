@@ -1,4 +1,11 @@
-.login, .signup {
+.login {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	padding: 10px;
+}
+
+.signup {
 	width: 100%;
 	height: 100vh;
 	display: flex;

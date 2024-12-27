@@ -24,8 +24,13 @@ export function CollectionsCard ({ collectionName, noOfBooks }: CollectionCardTy
 			</div>
 
 			<div className='dashboard-collection-card-info'>
-				<span> {collectionName} </span>
+				<span> {collectionName.length > 10 ? (collectionName.slice(0, 10) + '...') : collectionName }</span>
 				<span> {noOfBooks == 1 ? `${noOfBooks} Book` : `${noOfBooks} Books`} </span>
+			</div>
+
+			<div className='collection-extra'>
+				<span> Collection Title: {collectionName} </span>
+				<span> {noOfBooks} Books in this Collection </span>
 			</div>
 
 		</div>
