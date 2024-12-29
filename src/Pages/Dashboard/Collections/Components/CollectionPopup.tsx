@@ -2,19 +2,8 @@ import '../style.css'
 import '../style.mobile.css'
 import { BsX } from 'react-icons/bs'
 import React, { useEffect, useRef, useState } from 'react'
+import { PagePopupType, CollectionPopupType, CollectionBookType } from '../../../../assets/Types.ts'
 
-type PopupType = {
-	setPopup: (arg: boolean) => void;
-}
-
-type CollectionPopupType = {
-	collection_name: string;
-}
-
-type CollectionBookType = {
-	title: string;
-	key?: string
-}
 
 function CollectionBook ({ title }: CollectionBookType) {
 
@@ -33,7 +22,7 @@ function CollectionBook ({ title }: CollectionBookType) {
 	)
 }
 
-export function CollectionPopup ({ setPopup }: PopupType) {
+export function CollectionPopup ({ setPopup }: PagePopupType) {
 	
 	const [ info, setInfo ] = useState<CollectionPopupType>({
 		collection_name: ''

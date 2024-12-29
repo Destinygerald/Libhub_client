@@ -5,22 +5,15 @@ import { IoBookOutline } from 'react-icons/io5'
 import { MdOutlineCollections } from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { HiOutlineArchiveBox } from 'react-icons/hi2'
+import { SidebarItemProps } from '../../../assets/Types.ts'
 
-type SidebarItemProps = {
-	Icon: any;
-	nav: string;
-	name: string;
-	active: boolean;
-}
-
-
-function SidebarItem ({ Icon, nav, name, active}: SidebarItemProps) {
+function SidebarItem ({ icon, nav, name, active}: SidebarItemProps) {
 
 	const navigate = useNavigate()
 
 	return (
 		<div className={ active ?  'sidebar-item active': 'sidebar-item'} onClick={() => navigate(nav)}>
-			{ Icon }
+			{ icon }
 		
 			<span className='sidebar-item-hover'> {name} </span>
 		</div>
@@ -36,10 +29,10 @@ export function Sidebar () {
 			<span>Lib</span>
 
 			<div className='sidebar-cnt'>
-				<SidebarItem Icon={<CiHome />} nav='/library' name='Home' active={pathname == '/library'} />
-				<SidebarItem Icon={<IoBookOutline />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
-				<SidebarItem Icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
-				<SidebarItem Icon={<MdOutlineCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
+				<SidebarItem icon={<CiHome />} nav='/library' name='Home' active={pathname == '/library'} />
+				<SidebarItem icon={<IoBookOutline />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
+				<SidebarItem icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
+				<SidebarItem icon={<MdOutlineCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
 			</div>
 
 

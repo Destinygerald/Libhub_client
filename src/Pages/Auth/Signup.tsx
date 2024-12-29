@@ -3,13 +3,7 @@ import './style.mobile.css'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { InputField } from './Components/InputField.tsx'
-
-type SignupType = {
-	name: string,
-	email: string;
-	password: string;
-	confirm_password: string;
-}
+import { SignupType } from '../../assets/Types.ts'
 
 function Page () {
 

@@ -5,58 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { CiSearch, CiMenuFries } from 'react-icons/ci'
 import { openSlider } from '../../../features/SliderFeature.tsx'
+import { HomeBookCardType } from '../../../assets/Types.ts'
+import { DisplayBooks as Books } from '../../../Api/DummyData.ts'
 
-
-type BookCardType = {
-	key?: string;
-	img: string | undefined;
-	title: string;
-	category: string[];	
-}
-
-
-const Books = [
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	},
-	{
-		img: '',
-		title: 'The Wishing Well',
-		category: ['Folklore, Fantaty, Tradegyu']
-	}
-]
 
 
 function PageTopRight () {
@@ -75,7 +26,7 @@ function PageTopRight () {
 }
 
 
-function BookCard ({ img, title, category }: BookCardType) {
+function BookCard ({ img, title, category }: HomeBookCardType) {
 	return (
 		<div className='book-card'>
 			<div>

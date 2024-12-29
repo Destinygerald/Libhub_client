@@ -7,15 +7,10 @@ import { HiArchiveBox } from 'react-icons/hi2'
 import { IoBook } from 'react-icons/io5'
 import { MdCollections, MdHomeFilled } from 'react-icons/md'
 import { closeSlider } from '../../../features/SliderFeature.tsx'
+import { SidebarItemProps } from '../../../assets/Types.ts'
 
-type SliderItemProps = {
-	icon: any;
-	nav: string;
-	name: string;
-	active: boolean;
-}
 
-function SliderItem ({ icon, nav, name, active }: SliderItemProps) {
+function SliderItem ({ icon, nav, name, active }: SidebarItemProps) {
 
 	const navigate = useNavigate()
 	const dispatch = useDispatch()

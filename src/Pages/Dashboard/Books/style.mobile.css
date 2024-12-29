@@ -10,9 +10,21 @@
 	}
 
 	.dashboard-books-cnt-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(3, calc(calc(100% - 12px) / 3));
 		grid-template-rows: repeat(4, 1fr);
 		gap: 6px;
+	}
+
+	.dashboard-books-card-info > div:first-child {
+		font-size: .68rem;
+		gap: 12px;
+	}
+
+	.dashboard-books-card-info > div:first-child > span:first-child {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 72%;
 	}
 
 	.dashboard-books-pagination {

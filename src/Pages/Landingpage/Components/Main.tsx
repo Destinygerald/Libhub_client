@@ -4,18 +4,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
 import { FaBookOpen, FaBookReader, FaQuestion } from 'react-icons/fa'
-
-
-type MessageType = {
-	name: string;
-	email: string;
-	message: string;
-}
-
-type FeaturesCardType = {
-	icon: any;
-	title: string;
-}
+import { MessageType, FeaturesCardType } from '../../../assets/Types.ts'
 
 function Banner () {
 

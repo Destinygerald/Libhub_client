@@ -9,13 +9,10 @@ import { CollectionPopup } from './Components/CollectionPopup.tsx'
 import { openSlider } from '../../../features/SliderFeature.tsx'
 // Dummy data api
 import { fetchCollections, getNoOfCollectionPage } from '../../../Api/DummyData.ts'
+import { CollectionNavType, CollectionType } from '../../../assets/Types.ts'
 
 
-type PageNavType = {
-	setPopup: (arg: boolean) => void;
-}
-
-function PageNav ({ setPopup }: PageNavType) {
+function PageNav ({ setPopup }: CollectionNavType) {
 
 	const [ search, setSearch ] = useState<string>('')
 
@@ -31,13 +28,6 @@ function PageNav ({ setPopup }: PageNavType) {
 			</div>
 		</div>
 	)
-}
-
-
-type CollectionType = {
-	collectionName: string;
-	noOfBooks: number;
-	id: string;
 }
 
 

@@ -2,17 +2,7 @@ import '../style.css'
 import '../style.mobile.css'
 import { useNavigate } from 'react-router-dom'
 import { IoIosEye } from 'react-icons/io'
-
-
-type BookCardType = {
-	key?: string;
-	id: string;
-	img?: string | any;
-	title: string;
-	description: string;
-	views: number;
-}
-
+import { BookCardType } from '../../../../assets/Types.ts'
 
 
 export function BookCard ({ id, img, title, description, views }: BookCardType) {

@@ -2,15 +2,7 @@ import '../style.css'
 import '../style.mobile.css'
 import React, { useState, useRef, useEffect } from 'react'
 import { BsX } from 'react-icons/bs'
-
-type questionPopupType = {
-	closePopup: () => void;
-}
-
-type questionPopupInput = {
-	questionTitle: string;
-	questionDescription: string;
-}
+import { questionPopupType, questionPopupInput } from '../../../../assets/Types.ts'
 
 export function QuestionPopup ({ closePopup }: questionPopupType) {
 

@@ -9,33 +9,12 @@ import { BsX } from 'react-icons/bs'
 import { BookDisplay } from './Components/BookDisplay.tsx'
 import { openSlider } from '../../../features/SliderFeature.tsx'
 import { BookCard } from './Components/BookCard.tsx'
+// Dummy data api
+import { fetchBooks, getNoOfBooksPage, fetchPopularBooks, getNoOfPopularBooks } from '../../../Api/DummyData.ts'
+import { BookCardType, PopupInputType, PagePopupType, BookPageNavType, BookDetailsType } from '../../../assets/Types.ts'
 
-type PopupInputType = {
-	type: string;
-	name: string;
-	value?: string;
-	placeholder: string;
-	changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-} 
 
-type PagePopupType = {
-	setPopup: (arg: boolean) => void;
-}
-
-type PageNavType = {
-	setPopup: (arg: boolean) => void;
-	nav?: string;
-	setNav: (arg: string) => void;
-}
-
-type BookDetailsType = {
-	title: string;
-	category: string;
-	cover_image?: string;
-	description?: string;
-}
-
-function PageNav ({ setPopup, nav, setNav }: PageNavType) {
+function PageNav ({ setPopup, nav, setNav }: BookPageNavType ) {
 
 	const [ search, setSearch ] = useState<string>('')
 
@@ -46,8 +25,8 @@ function PageNav ({ setPopup, nav, setNav }: PageNavType) {
 	return (
 		<div className='dashboard-books-cnt-nav'>
 			<div className='dashboard-books-cnt-nav-categories'>
-				<span className={ nav == 'Recents' ? 'selected-nav' : '' } onClick={() => switchDisplay('Recents')}>Recents</span>
 				<span className={ nav == 'All' ? 'selected-nav' : '' } onClick={() => switchDisplay('All')}>All</span>
+				<span className={ nav == 'Recents' ? 'selected-nav' : '' } onClick={() => switchDisplay('Recents')}>Recents</span>
 				<span className={ nav == 'Popular' ? 'selected-nav' : '' } onClick={() => switchDisplay('Popular')}>Popular</span>
 			</div>
 
@@ -270,29 +249,50 @@ function PagePopup ({ setPopup }: PagePopupType) {
 
 function PageIndex () {
 	const [ popup, setPopup ] = useState<boolean>(false)
-	const [ nav, setNav ] = useState<string>('Recents')
+	const [ nav, setNav ] = useState<string>('All')
 	const [ pageIndex, setPageIndex ] = useState<number>(1)
+	const [ pagesNo, setPagesNo ] = useState<number>(1)
+	const [ bookList, setBookList ] = useState<BookCardType[] | null>([])
 	const dispatch = useDispatch()
 
 	function sliderOpen () {
 		dispatch(openSlider())
 	}
 
-	function prevIndex () {
+	async function prevIndex () {
 		if (pageIndex <= 1) return
 
 		setPageIndex(pageIndex => pageIndex - 1);
+
+		const books = await fetchBooks(pageIndex - 1)
+
+		setBookList(books)
 	}
 
-	function nextIndex () {
-		if (pageIndex >= 8) return
+	async function nextIndex () {
+		if (pageIndex >= pagesNo) return
 
 		setPageIndex(pageIndex => pageIndex + 1);
+
+		const books = await fetchBooks(pageIndex + 1)
+
+		setBookList(books)
 	}
 
-	function changeIndex (id: number) {
-		setPageIndex(id)
+	async function getAllBooks () {
+		const books = await fetchBooks(1)
+		setBookList(books)
 	}
+
+	function getPagesNo () {
+		const page = getNoOfBooksPage()
+		setPagesNo(page)
+	}
+
+	useEffect(() => {
+		getAllBooks()
+		getPagesNo()
+	}, [])
 
 	return (
 		<div className='dashboard-books'>
@@ -305,13 +305,13 @@ function PageIndex () {
 				<div className='dashboard-books-cnt-main'>
 					<div className='dashboard-books-cnt-grid'>
 						{
-							nav == 'Recents'
+							nav == 'All'
 							?
-							Array.from(Array(10)).map((_, i) => (
-								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
+							bookList?.map((book, i) => (
+								<BookCard key={'book-card-' + i} id={book?.id} img='--' title={book?.title} description={book?.description} views={book?.views} />
 							))
 							:
-							nav == 'All'
+							nav == 'Recents'
 							?
 							Array.from(Array(12)).map((_, i) => (
 								<BookCard key={'book-card-' + i} id={`${Math.round(Math.random()) * i}` } img='--' title='Title' description='Description' views={0} />
@@ -334,7 +334,7 @@ function PageIndex () {
 							{
 								// Array.from(Array(8)).map((_, i) => (
 									<span className='page-index'>
-										{pageIndex} of 8
+										{pageIndex} of {pagesNo}
 									</span>
 								// ))
 							}

@@ -1,14 +1,7 @@
 import '../style.css'
 import '../style.mobile.css'
-import React from 'react'
-
-type InputFieldType = {
-	type: string;
-	value: string;
-	name: string;
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	forgot?: boolean;
-}
+// import React from 'react'
+import { InputFieldType } from '../../../assets/Types.ts'
 
 export function InputField ({ type, value, name, handleChange, forgot }: InputFieldType) {
 

@@ -1,3 +1,14 @@
 @media (max-width: 600px) {
-	
+	.drafts-nav {
+		flex-direction: column-reverse;
+		gap: 12px;
+	}
+
+	.drafts-nav-categories {
+		align-self: flex-start;
+	}
+
+	.drafts-nav-search {
+		width: 72%;
+	}
 }

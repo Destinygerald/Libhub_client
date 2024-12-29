@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import SliderReducer from './features/SliderFeature.tsx'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     slider: SliderReducer
   }

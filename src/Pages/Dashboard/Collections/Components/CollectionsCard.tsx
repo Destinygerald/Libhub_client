@@ -1,13 +1,7 @@
 import '../style.css'
 import '../style.mobile.css'
+import { CollectionCardType } from '../../../../assets/Types.ts'
 
-type CollectionCardType = {
-	id?: string;
-	key?: string;
-	collectionName: string;
-	noOfBooks: number;
-	bookImgs?: string[];
-}
 
 // Dont forget to add book images as well as id
 export function CollectionsCard ({ collectionName, noOfBooks }: CollectionCardType) {

@@ -1,8 +1,4 @@
-type CollectionType = {
-	collectionName: string;
-	noOfBooks: number;
-	id: string;
-}
+import { CollectionType, BookType, DisplayCardType } from '../assets/Types.ts'
 
 
 const collections: CollectionType[] = [
@@ -93,15 +89,6 @@ const collections: CollectionType[] = [
 	}
 ]
 
-
-type BookType = {
-	title: string;
-	id: string;
-	img?: string | any;
-	description: string;
-	views: number;
-}
-
 const Books: BookType[] = [
 	{
 		title: 'MAT 201',
@@ -125,6 +112,34 @@ const Books: BookType[] = [
 		views: 96
 	},
 	{
+		title: 'STA 203',
+		id: 'sta_bk_72h0',
+		img: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
+		views: 68
+	},
+	{
+		title: 'STA 211',
+		id: 'sta_bk_8122',
+		img: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
+		views: 70
+	},
+	{
+		title: 'MAT 213',
+		id: 'mat_bk_0a22',
+		img: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
+		views: 120
+	},
+	{
+		title: 'Flutter',
+		id: 'flt_bk_j1s2',
+		img: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
+		views: 96
+	},
+	{
 		title: 'C: OOP',
 		id: 'c_oop_92s2',
 		img: '',
@@ -132,62 +147,149 @@ const Books: BookType[] = [
 		views: 96
 	},
 	{
-		title: 'MAT 201',
-		id: 'mat_bk_8122',
+		title: 'MAC 221',
+		id: 'mac_bk_1022',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 80
+		views: 72
 	},
 	{
-		title: 'GNS 211',
-		id: 'gns_bk_0a22',
+		title: 'PHY 231',
+		id: 'phy_bk_0t67',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
 		views: 180
 	},
 	{
-		title: 'Java for Beginners',
-		id: 'jv_bg_j1s2',
+		title: 'Mental HealthCare',
+		id: 'mtl_hlt_c1s2',
+		img: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
+		views: 220
+	},
+	{
+		title: 'How to Pass Exams',
+		id: 'hw_tex_7ye2',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
 		views: 96
 	},
 	{
-		title: 'C: OOP',
-		id: 'c_oop_92s2',
+		title: 'GST 210',
+		id: 'gst_bk_7989',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 96
+		views: 24
 	},
 	{
-		title: 'MAT 201',
-		id: 'mat_bk_8122',
+		title: 'Data Science',
+		id: 'dt_sc_79s8',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 80
+		views: 116
 	},
 	{
-		title: 'GNS 211',
-		id: 'gns_bk_0a22',
+		title: 'Roadmap to Networking',
+		id: 'rdp_ntw_hs98',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 180
+		views: 44
 	},
 	{
-		title: 'Java for Beginners',
-		id: 'jv_bg_j1s2',
+		title: 'Typescript',
+		id: 'tps_bk_7ye2',
 		img: '',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 96
-	},
-	{
-		title: 'C: OOP',
-		id: 'c_oop_92s2',
-		img: '',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec consectetur semper nunc in molestie.',
-		views: 96
-	},
+		views: 126
+	}
 ]
+
+export const DisplayBooks: DisplayCardType[] = [
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	},
+	{
+		img: '',
+		title: 'The Wishing Well',
+		category: ['Folklore, Fantaty, Tradegyu']
+	}
+]
+
+export function fetchBooks (id: number): Promise<BookType[]> {
+
+	return new Promise<BookType[]>((resolve,  reject) => {
+
+		let index = id - 1
+
+		let value = Books.slice(index * 12, (index * 12) + 12)
+
+		if (index < 0) reject([]);
+		resolve(value)
+	})
+}
+
+export function getNoOfBooksPage (): number {
+
+	let page = Math.floor(Books.length / 12)
+
+	if (Books.length % 12 > 0) {
+		page += 1
+	}
+
+	return page
+}
+
+export function fetchPopularBooks (): Promise<BookType[]> {
+	return new Promise<BookType[]>((resolve, _) => {
+		let value = Books.filter(itm => itm.views > 120)
+		resolve(value)
+	})
+}
+
+
+export function getNoOfPopularBooks () {
+	let value = Books.filter(itm => itm.views > 120).length
+
+	let page = Math.floor(value / 12)
+
+	if (value % 12 > 0) {
+		page += 1
+	}
+
+	return page
+} 
 
 export function fetchCollections (id: number): Promise<CollectionType[]> {
 

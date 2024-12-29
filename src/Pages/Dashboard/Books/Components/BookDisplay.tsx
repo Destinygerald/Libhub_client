@@ -5,31 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { IoIosEye } from 'react-icons/io'
 import { MdOutlineFileDownload, MdOutlineFileDownloadDone } from 'react-icons/md'
 import { QuestionPopup } from './QuestionPopup.tsx'
-
-type BookDisplayMainBooksType = {
-	title: string;
-	img?: string;
-	id: string;
-}
-
-type BookAnswerType = {
-	reply: string;
-	author: string
-	approval: number;
-	disapproval: number;
-	date: string;
-}
-
-type BookQuestionType = {
-	questionTitle: string;
-	questionDescription: string;
-	approval: number;
-	disapproval: number;
-	author: string;
-	date: string;
-	repliesNo: number;
-	replies?: BookAnswerType[];
-}
+import { BookDisplayMainBooksType, BookAnswerType, BookQuestionType } from '../../../../assets/Types.ts'
 
 function BookDisplayMainBooks ({ title, img, id }: BookDisplayMainBooksType) {
 		

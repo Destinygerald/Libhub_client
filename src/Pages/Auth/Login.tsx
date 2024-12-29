@@ -3,11 +3,7 @@ import './style.mobile.css'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { InputField } from './Components/InputField.tsx'
-
-type LoginType = {
-	email: string ;
-	password: string;
-}
+import { LoginType } from '../../assets/Types.ts'
 
 function Page () {
 

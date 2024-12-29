@@ -1,12 +1,11 @@
 import './style.css'
 import './style.mobile.css'
 import { useState } from 'react'
-import { CiSearch } from 'react-icons/ci'
+import { useDispatch } from 'react-redux'
+import { CiSearch, CiMenuFries } from 'react-icons/ci'
+import { openSlider } from '../../../features/SliderFeature.tsx'
+import { PageNavType } from '../../../assets/Types.ts'
 
-type PageNavType = {
-	nav: string;
-	setNav: (arg: string) => void;
-}
 
 function PageNav ({ nav, setNav }: PageNavType) {
 
@@ -36,12 +35,45 @@ function PageNav ({ nav, setNav }: PageNavType) {
 function Page () {
 
 	const [ nav, setNav ] = useState<string>('All')
+	const [ pageIndex, setPageIndex ] = useState<number>(1)
+	const [ pagesNo, setPagesNo ] = useState<number>(1)
+
+	const dispatch = useDispatch()
+
+	function sliderOpen () {
+		dispatch(openSlider())
+	}
+
+	function nextIndex() {
+		if (pageIndex >= pagesNo) return;
+	}
+
+	function prevIndex() {
+		if (pageIndex <= 1) return;
+	}
 
 	return (
 		<div className='drafts'>
 			<PageNav nav={nav} setNav={setNav} />
 
+			<div className='dashboard-menu drafts-menu' onClick={sliderOpen}> <CiMenuFries /> </div>
 
+			<div className='drafts-main'>
+				
+				<div className='drafts-main-grid'></div>
+
+				<div className='dashboard-books-pagination'>
+					<span className={pageIndex <= 1 ? 'pagination-btn-disable' : 'pagination-btn'} onClick={prevIndex}> Prev </span>
+					
+					<div className='dashboard-books-pagination-cnt'>
+						<span className='page-index'>
+							{pageIndex} of {pagesNo}
+						</span>
+					</div>
+
+					<span className={pageIndex >= pagesNo ? 'pagination-btn-disable' : 'pagination-btn'} onClick={nextIndex}> Next </span>
+				</div>
+			</div>
 		</div>
 	)
 }
