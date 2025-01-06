@@ -170,3 +170,17 @@ export type BookType = {
 	description: string;
 	views: number;
 }
+
+export type DraftCardType = {
+	key?: string;
+	id: string;
+	title: string;
+	date: number;
+}
+
+export type DraftPopupType = {
+	open: boolean;
+	id: string;
+	title: string;
+	type: string;
+}

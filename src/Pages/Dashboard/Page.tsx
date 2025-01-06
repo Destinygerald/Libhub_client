@@ -7,8 +7,9 @@ import Home from './Home/Page.tsx'
 import Books from './Books/Page.tsx'
 import Collections from './Collections/Page.tsx'
 import Drafts from './Drafts/Page.tsx'
+import Profile from './Profile/Page.tsx'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../App.tsx'
+import { IRootState } from '../../assets/Types.ts'
 
 function Page () {
 
@@ -32,6 +33,7 @@ function Page () {
 					<Route path='/books/*' element={<Books />} />
 					<Route path='/collections/*' element={<Collections />} />
 					<Route path='/drafts' element={<Drafts />} />
+					<Route path='/profile/*' element={<Profile />} />
 				</Routes>
 			</div>
 

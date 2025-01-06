@@ -33,6 +33,27 @@ export function CollectionPopup ({ setPopup }: PagePopupType) {
 		setInfo({ collection_name: e.target.value })
 	}
 
+	function handlePointer(e: React.PointerEvent<HTMLDivElement> | React.SyntheticEvent<HTMLDivElement>) {
+		//@ts-ignore
+		if (!ref?.current?.contains(e?.target)) {
+			setPopup(false)
+		}
+
+		return;
+	} 
+
+	useEffect(() => {
+		const doc = document.querySelector('.dashboard-collection')
+
+		if (!doc) return;
+
+		//@ts-ignore
+		doc.addEventListener('pointerdown', handlePointer)
+
+		//@ts-ignore
+		return () => doc.removeEventListener('pointerdown', handlePointer)
+	}, [])
+
 	return (
 		<div className='dashboard-books-popup dashboard-collection-popup' ref={ref}>
 			

@@ -1,11 +1,13 @@
 import './style.css'
 import './style.mobile.css'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { CiSearch, CiMenuFries } from 'react-icons/ci'
 import { openSlider } from '../../../features/SliderFeature.tsx'
-import { PageNavType } from '../../../assets/Types.ts'
-
+import { PageNavType, IRootState, DraftPopupType } from '../../../assets/Types.ts'
+import { DraftBookCard } from './Components/DraftBookCard.tsx'
+import { DraftPopup } from './Components/DraftPopup.tsx'
+import { DraftCollectionCard } from './Components/DraftCollectionCard.tsx'
 
 function PageNav ({ nav, setNav }: PageNavType) {
 
@@ -18,7 +20,6 @@ function PageNav ({ nav, setNav }: PageNavType) {
 	return (
 		<div className='drafts-nav'>
 			<div className='drafts-nav-categories'>
-				<span className={ nav == 'All' ? 'selected-nav' : '' } onClick={() => switchDisplay('All')}>All</span>
 				<span className={ nav == 'Books' ? 'selected-nav' : '' } onClick={() => switchDisplay('Books')}>Books</span>
 				<span className={ nav == 'Collections' ? 'selected-nav' : '' } onClick={() => switchDisplay('Collections')}>Collections</span>
 			</div>
@@ -34,23 +35,17 @@ function PageNav ({ nav, setNav }: PageNavType) {
 
 function Page () {
 
-	const [ nav, setNav ] = useState<string>('All')
-	const [ pageIndex, setPageIndex ] = useState<number>(1)
-	const [ pagesNo, setPagesNo ] = useState<number>(1)
-
+	const [ nav, setNav ] = useState<string>('Books')
+	const popup = useSelector<IRootState, DraftPopupType>(state => state.draft_popup.value)
 	const dispatch = useDispatch()
 
 	function sliderOpen () {
 		dispatch(openSlider())
 	}
 
-	function nextIndex() {
-		if (pageIndex >= pagesNo) return;
-	}
+	useEffect(() => {
 
-	function prevIndex() {
-		if (pageIndex <= 1) return;
-	}
+	}, [])
 
 	return (
 		<div className='drafts'>
@@ -59,21 +54,22 @@ function Page () {
 			<div className='dashboard-menu drafts-menu' onClick={sliderOpen}> <CiMenuFries /> </div>
 
 			<div className='drafts-main'>
-				
-				<div className='drafts-main-grid'></div>
-
-				<div className='dashboard-books-pagination'>
-					<span className={pageIndex <= 1 ? 'pagination-btn-disable' : 'pagination-btn'} onClick={prevIndex}> Prev </span>
-					
-					<div className='dashboard-books-pagination-cnt'>
-						<span className='page-index'>
-							{pageIndex} of {pagesNo}
-						</span>
-					</div>
-
-					<span className={pageIndex >= pagesNo ? 'pagination-btn-disable' : 'pagination-btn'} onClick={nextIndex}> Next </span>
+				<div className='drafts-main-grid'>
+					{
+						Array.from(Array(28)).map((_, i) => (
+							<DraftBookCard key={'draft-book-card-' + i} id='---' title='---' date={0} />
+						))
+					}
 				</div>
 			</div>
+
+			{
+				popup?.open 
+				?
+				<DraftPopup />
+				:
+				''
+			}
 		</div>
 	)
 }

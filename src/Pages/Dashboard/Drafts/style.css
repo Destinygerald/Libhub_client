@@ -78,20 +78,71 @@
 .drafts-main {
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	overflow: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
-	padding-bottom: 4px;
+	padding: 0 4px;
+	padding-top: 4px;
+	padding-bottom: 20px;
+}
+
+.drafts-main::-webkit-scrollbar {
+	display: none;
 }
 
 .drafts-main-grid {
 	width: 100%;
-	display: grid;
-	height: calc(96% - 12px);
-	column-gap: 12px;
-	row-gap: 20px;
-	grid-template-columns: repeat(6, calc(calc(100% - 72px) / 6));
-	grid-template-rows: repeat(2, 1fr);
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+	gap: 12px;
+}
+
+.draft-card {
+	width: 100%;
+	display: flex;
+	height: 60px;
+	background-color: rgb(255, 250, 245, .8);
+	border-radius: 4px;
+	box-shadow: 0 0 2px rgb(120, 120, 120, .55);
+	align-items: center;
+	/*padding: 0 12px;*/
+	justify-content: space-between;
+}
+
+.draft-card > div:first-child {
+	width: 95%;
+	height: 100%;
+}
+
+.delete-btn {
+	justify-self: flex-end;
+	color: red;
+	padding: 12px;
+}
+
+.draft-popup {
+	width: 80%;
+	height: 80%;
+	background-color: var(--bg-white);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	box-shadow: 0 1px 2px rgb(0, 0, 0, .4);
+	border-radius: 12px;
+	padding: 36px 40px;
+}
+
+.draft-popup-exit {
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	font-size: 1.2rem;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
 }

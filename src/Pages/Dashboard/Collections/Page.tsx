@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { CollectionsCard } from './Components/CollectionsCard.tsx'
 import { CollectionPopup } from './Components/CollectionPopup.tsx'
 import { openSlider } from '../../../features/SliderFeature.tsx'
+import CollectionListPage from './Components/CollectionList.tsx'
 // Dummy data api
 import { fetchCollections, getNoOfCollectionPage } from '../../../Api/DummyData.ts'
 import { CollectionNavType, CollectionType } from '../../../assets/Types.ts'
@@ -87,7 +88,7 @@ function PageMain () {
 				<div className='dashboard-collection-cnt-grid'>
 					{
 						collections?.map((item, i) => (
-							<CollectionsCard key={'colletion-card-' + i} collectionName={item?.collectionName} noOfBooks={item?.noOfBooks} />
+							<CollectionsCard key={'colletion-card-' + i} collectionName={item?.collectionName} noOfBooks={item?.noOfBooks} id={item?.id} />
 						))
 					}
 				</div>
@@ -127,6 +128,7 @@ function Page () {
 		<div className='dashboard-collection'>
 			<Routes>
 				<Route index element={<PageMain />} />
+				<Route path='/:id' element={<CollectionListPage />} />
 			</Routes>
 		</div>
 	)

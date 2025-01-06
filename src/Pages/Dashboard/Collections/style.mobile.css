@@ -51,4 +51,24 @@
 	.dashboard-collection-popup-grid-cnt {
 		grid-template-columns: repeat(2, 1fr);
 	}
+
+	.collection-page-list-hdr {
+		align-self: center;
+		max-width: 72%;
+	}
+
+	.collection-page-list-cnt {
+		height: 90%;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(4, 1fr);
+		gap: 6px;
+	}
+
+	.collection-back-btn {
+		display: flex;
+		position: absolute;
+		left: 20px;
+		font-size: 1.2rem;
+		top: 28px;
+	}
 }

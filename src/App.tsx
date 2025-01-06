@@ -7,14 +7,18 @@ import Dashboard from './Pages/Dashboard/Page.tsx'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import SliderReducer from './features/SliderFeature.tsx'
+import CollectionName from './features/CollectionName.tsx'
+import DraftPopup from './features/DraftPopup.tsx'
 
 export const store = configureStore({
   reducer: {
-    slider: SliderReducer
+    slider: SliderReducer,
+    collection_name: CollectionName,
+    draft_popup: DraftPopup
   }
 })
 
-export type IRootState = ReturnType<typeof store.getState>
+// export type IRootState = ReturnType<typeof store.getState>
 
 function App() {
 

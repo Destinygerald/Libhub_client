@@ -1,5 +1,6 @@
 import '../style.css'
 import '../style.mobile.css'
+import { BsPerson } from 'react-icons/bs'
 import { CiHome } from 'react-icons/ci'
 import { IoBookOutline } from 'react-icons/io5'
 import { MdOutlineCollections } from 'react-icons/md'
@@ -31,8 +32,9 @@ export function Sidebar () {
 			<div className='sidebar-cnt'>
 				<SidebarItem icon={<CiHome />} nav='/library' name='Home' active={pathname == '/library'} />
 				<SidebarItem icon={<IoBookOutline />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
-				<SidebarItem icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
 				<SidebarItem icon={<MdOutlineCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
+				<SidebarItem icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
+				<SidebarItem icon={<BsPerson />} nav='' name='Profile' active={pathname == '/library/profile' || pathname.includes('/profile')} />
 			</div>
 
 

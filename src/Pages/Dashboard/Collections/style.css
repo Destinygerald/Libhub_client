@@ -2,6 +2,7 @@
 	width: 100%;
 	height: 100%;
 	padding: 32px 2.5%;
+	padding-bottom: 12px;
 }
 
 .dashboard-collection-cnt {
@@ -330,4 +331,35 @@
 
 .collection-book-tic-select {
 	background-color: var(--primary-orange);
+}
+
+.collection-page-list {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.collection-page-list-hdr {
+	font-size: 1.12rem;
+	font-weight: 700;
+}
+
+.collection-page-list-cnt {
+	width: 100%;
+	height: 90%;
+	gap: 12px;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	margin-bottom: -12px;
+}
+
+.collection-page-list .page-index {
+	padding: 10px 40px;
+}
+
+.collection-back-btn {
+	display: none;
 }
