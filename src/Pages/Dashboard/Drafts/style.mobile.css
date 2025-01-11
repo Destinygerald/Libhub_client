@@ -28,6 +28,10 @@
 		background-color: rgb(250, 130, 60, .1);
 	}
 
+	.drafts-main {
+		padding-right: 0px;
+	}
+
 	.drafts-main::-webkit-scrollbar {
 		display: none;
 	}

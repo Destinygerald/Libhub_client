@@ -34,7 +34,7 @@ export function Sidebar () {
 				<SidebarItem icon={<IoBookOutline />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
 				<SidebarItem icon={<MdOutlineCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
 				<SidebarItem icon={<HiOutlineArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
-				<SidebarItem icon={<BsPerson />} nav='' name='Profile' active={pathname == '/library/profile' || pathname.includes('/profile')} />
+				<SidebarItem icon={<BsPerson />} nav='/library/user' name='Profile' active={pathname == '/library/user' || pathname.includes('/user')} />
 			</div>
 
 

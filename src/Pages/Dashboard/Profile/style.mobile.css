@@ -1,3 +1,16 @@
 @media (max-width: 600px) {
-	
+
+	.profile {
+		display: none;
+	}	
+
+	.mobile_profile {
+		display: flex;
+	}
+
+	.profile-menu {
+		left: 16px;
+		top: 24px;
+		position: absolute;
+	}
 }

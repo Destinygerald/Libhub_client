@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { InputField } from './Components/InputField.tsx'
 import { SignupType } from '../../assets/Types.ts'
+import bgImg from '/images/orange_bg.webp'
 
 function Page () {
 
@@ -26,7 +27,15 @@ function Page () {
 
 	return (
 		<div className='signup'>
-			<div className='auth-banner'></div>
+			<div className='auth-banner'>
+				<img src={bgImg} />
+
+				<div>
+					<div className='auth-line' />
+					<span>LibHub</span>
+					<div className='auth-line' />
+				</div>
+			</div>
 
 			<div className='auth-container'>
 				<span> Get Started </span>

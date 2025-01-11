@@ -6,6 +6,7 @@
 	.landing-page-banner {
 		flex-direction: column;
 		padding-top: 20px;
+		gap: 40px;
 	}
 
 	.landing-page-banner-left, .landing-page-banner-right {
@@ -43,6 +44,11 @@
 	.landing-page-sect-1-right {
 		width: 100%;
 		height: 180px;
+	}
+
+	.landing-page-banner-right > img {
+		height: auto;
+		width: 100%;
 	}
 
 	.landing-page-sect-1-right:nth-child(2) {

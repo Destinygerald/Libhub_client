@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
 import { FaBookOpen, FaBookReader, FaQuestion } from 'react-icons/fa'
 import { MessageType, FeaturesCardType } from '../../../assets/Types.ts'
+import girl_with_book from '/images/girl_with_book.webp'
+import books_lib from '/images/books_lib.webp'
+import book_stack_1 from '/images/book_stack_1.webp'
 
 function Banner () {
 
@@ -37,7 +40,7 @@ function Banner () {
 
 
 			<div className='landing-page-banner-right'>
-				
+				<img src={girl_with_book} />
 			</div>
 		</div>
 	)
@@ -74,7 +77,9 @@ function Section1 () {
 				<button>Get Started</button>
 			</div>
 
-			<div className='landing-page-sect-1-right'></div>
+			<div className='landing-page-sect-1-right'>
+				<img src={books_lib} />
+			</div>
 		</div>
 	)
 }
@@ -86,7 +91,9 @@ function Section2 () {
 
 	return (
 		<div className='landing-page-sect-1'>
-			<div className='landing-page-sect-1-right'></div>
+			<div className='landing-page-sect-1-right'>
+				<img src={book_stack_1} />
+			</div>
 
 			<div className='landing-page-sect-1-left'>
 				<span>Publish Book materials and articles to make available to all readers.</span>

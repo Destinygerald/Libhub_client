@@ -87,10 +87,18 @@
 	padding: 0 4px;
 	padding-top: 4px;
 	padding-bottom: 20px;
+	padding-right: 12px;
 }
 
+
 .drafts-main::-webkit-scrollbar {
-	display: none;
+	width: 6px;
+}
+
+.drafts-main::-webkit-scrollbar-thumb {
+	cursor: pointer;
+	background-color: var(--primary-orange);
+	border-radius: 12px;
 }
 
 .drafts-main-grid {

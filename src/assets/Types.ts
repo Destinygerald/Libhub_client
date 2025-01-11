@@ -184,3 +184,15 @@ export type DraftPopupType = {
 	title: string;
 	type: string;
 }
+
+export type ProfileItemType = {
+	title: string;
+	amount: string;
+}
+
+export type ProfileNavItemType = {
+	name: string;
+	handleClick: (arg: string) => void;
+	itemNav: string;
+	nav: string;
+}

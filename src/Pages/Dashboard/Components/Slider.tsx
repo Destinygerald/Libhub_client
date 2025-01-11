@@ -51,7 +51,7 @@ export function Slider () {
 				<SliderItem icon={<IoBook />} nav='/library/books' name='Books' active={pathname == '/library/books' || pathname.includes('/books')} />
 				<SliderItem icon={<MdCollections />} nav='/library/collections' name='Collection' active={pathname == '/library/collections' || pathname.includes('/collections')} />
 				<SliderItem icon={<HiArchiveBox />} nav='/library/drafts' name='Drafts' active={pathname == '/library/drafts'} />
-				<SliderItem icon={<BsFillPersonFill />} nav='' name='Profile' active={pathname == '/library/profile' || pathname.includes('/profile')} />
+				<SliderItem icon={<BsFillPersonFill />} nav='/library/user' name='Profile' active={pathname == '/library/user' || pathname.includes('/user')} />
 			</div>
 		</div>
 	)

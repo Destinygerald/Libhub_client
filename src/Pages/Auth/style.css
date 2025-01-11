@@ -17,6 +17,37 @@
 	height: 100%;
 	border-radius: 12px;
 	background-color: var(--primary-orange);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.auth-banner > img {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: .5;
+}
+
+.auth-banner > div:last-child {
+	z-index: 1;
+	position: relative;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	height: fit-content;
+	color: white;
+	font-size: 2.4rem;
+	font-weight: 700;
+}
+
+.auth-line {
+	background-color: white;
+	width: 80px;
+	height: 6px;
 }
 
 .auth-container {

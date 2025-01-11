@@ -33,7 +33,7 @@ function Page () {
 					<Route path='/books/*' element={<Books />} />
 					<Route path='/collections/*' element={<Collections />} />
 					<Route path='/drafts' element={<Drafts />} />
-					<Route path='/profile/*' element={<Profile />} />
+					<Route path='/user' element={<Profile />} />
 				</Routes>
 			</div>
 
